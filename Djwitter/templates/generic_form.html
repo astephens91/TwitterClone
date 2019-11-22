@@ -1,6 +1,8 @@
 
 {% if user.is_authenticated %}
     <a href="/">HOME</a>
+{% else %}
+    <h3>Not a member? Sign up <a href="/signup/">here</a></h3>
 {% endif %}
 <form action="" method="post">
     {% csrf_token %}
