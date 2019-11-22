@@ -1,0 +1,14 @@
+{% for items in tweet %}
+    <div class="card" style="margin-bottom: 20px;">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="/{{ items.created_by }}/">
+                @{{ items.created_by }}</a>
+            </h5>
+            <p class="card-text">
+                <strong>{{ items.post_date }}</strong> -
+                {{ items.content }}
+            </p>
+        </div>
+    </div>
+{% endfor %}

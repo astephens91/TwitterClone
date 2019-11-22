@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+LOGIN_URL = '/login/'
+
 
 # Application definition
 
@@ -55,7 +57,7 @@ ROOT_URLCONF = 'Djwitter.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [[os.path.join(BASE_DIR, 'templates')]],
+        'DIRS': [os.path.join(BASE_DIR, 'Djwitter', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

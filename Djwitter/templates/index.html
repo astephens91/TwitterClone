@@ -1,0 +1,31 @@
+<h1>Djwitter</h1>
+
+<br><br>
+    
+    <nav id="navbar">
+        <ul>
+                <li><a href="/notification/{{user.id}}/">NOTIFICATIONS</a>: <strong>{{notifications}}</strong></li>
+                <li><a href="/addtweet/">ADD A TWEET</a></li>
+                <li><a href="/logout/">LOGOUT</a></li>
+
+        </ul>
+    </nav>
+    
+
+
+    {% for posts in tweets %}
+    <div class="card" style="margin-bottom: 20px;">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="/userprofile/{{posts.created_by.id}}">
+                @{{ posts.created_by }}</a>
+            </h5>
+            <p class="card-text">
+                <strong>{{ posts.post_date }}</strong> -
+                {{ posts.content }}
+            </p>
+            <br>
+            <p><a href="/tweet/{{posts.id}}">LINK TO TWEET</a></p>
+        </div>
+    </div>
+    {% endfor %}

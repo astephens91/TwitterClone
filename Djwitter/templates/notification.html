@@ -1,0 +1,13 @@
+{% for items in data %}
+    <div class="card" style="margin-bottom: 20px;">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="/userprofile/{{items.created_by.id}}">
+                @{{ items.tweet.created_by }}</a>
+            </h5>
+            <p class="card-text">
+                {{ items.tweet }}
+            </p>
+        </div>
+    </div>
+{% endfor %}
