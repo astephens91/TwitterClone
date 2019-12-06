@@ -3,14 +3,22 @@ from Djwitter.tweets.models import Tweet
 from Djwitter.tweets.forms import AddTweet
 from Djwitter.notifications.models import Notifications
 from Djwitter.twitterusers.models import TwitterUser
+from django.views import View
 import re
 
 
-def addtweet_view(request):
+
+class addtweet_view(View):
+    form_class = AddTweet
+    initial = {'key':'value'}
     html = 'generic_form.html'
 
-    if request.method == "POST":
-        form = AddTweet(request.POST)
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.html, {'form': form})
+    def post(self, request, *args, **kwargs):
+        
+        form = self.form_class(request.POST)
         if form.is_valid():
             data = form.cleaned_data
 
@@ -27,6 +35,5 @@ def addtweet_view(request):
                         tweet=tweet
                     )
 
-        return HttpResponseRedirect(reverse('homepage'))
-    form = AddTweet()
-    return render(request, html, {'form': form})
+            return HttpResponseRedirect(reverse('homepage'))
+        return render(request, self.html, {'form': form})

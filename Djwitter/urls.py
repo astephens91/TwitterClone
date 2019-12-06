@@ -30,9 +30,9 @@ admin.site.register(Notifications)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='homepage'),
-    path('tweet/<int:id>/', views.tweetview, name='specifictweet'),
-    path('userprofile/<int:id>/', views.profileview, name='profile')
+    path('', views.index.as_view(), name='homepage'),
+    path('tweet/<int:id>/', views.tweetview.as_view(), name='specifictweet'),
+    path('userprofile/<int:id>/', views.profileview.as_view(), name='profile')
     
 ]
 
